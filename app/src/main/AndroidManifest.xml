@@ -27,6 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".StreamTextDemoActivity"
+            android:exported="false"
+            android:label="StreamTextView Demo"
+            android:theme="@style/Theme.SSEBridge" />
     </application>
 
 </manifest>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:context=".StreamTextDemoActivity">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="流式文本展示组件演示"
+            android:textColor="#212121"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/subtitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="StreamTextView Demo"
+            android:textColor="#757575"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+        <!-- Status Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/statusCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#E3F2FD"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:layout_constraintTop_toBottomOf="@id/subtitleTextView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="准备就绪"
+                    android:textColor="#1976D2"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/progressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="进度: 0%"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progress="0" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- StreamTextView Display Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/displayCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:minHeight="200dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/statusCard">
+
+            <com.github.ssebridge.widget.StreamTextView
+                android:id="@+id/streamTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="#212121"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp"
+                tools:text="Sample streaming text will appear here..." />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Controls Section -->
+        <TextView
+            android:id="@+id/controlsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="演示内容"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/displayCard" />
+
+        <LinearLayout
+            android:id="@+id/demoButtonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/controlsLabel">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/startShortButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="短文本演示"
+                app:icon="@android:drawable/ic_media_play" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/startLongButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="长文本演示"
+                app:icon="@android:drawable/ic_media_play" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/startSseButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="SSE流式文本演示"
+                app:icon="@android:drawable/ic_media_play" />
+        </LinearLayout>
+
+        <!-- Control Buttons -->
+        <TextView
+            android:id="@+id/controlButtonsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="控制"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/demoButtonsLayout" />
+
+        <LinearLayout
+            android:id="@+id/controlButtonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/controlButtonsLabel">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stopButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textSize="16sp"
+                android:text="停止"
+                app:icon="@android:drawable/ic_media_pause" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/resetButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:text="重置"
+                app:icon="@android:drawable/ic_menu_revert" />
+        </LinearLayout>
+
+        <!-- Speed Control -->
+        <TextView
+            android:id="@+id/speedControlLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="速度控制"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/controlButtonsLayout" />
+
+        <TextView
+            android:id="@+id/speedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="速度: 50ms/字符"
+            android:textColor="#616161"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/speedControlLabel" />
+
+        <SeekBar
+            android:id="@+id/speedSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/speedLabel" />
+
+        <!-- Color Presets -->
+        <TextView
+            android:id="@+id/colorPresetsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="配色方案"
+            android:textColor="#212121"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/speedSeekBar" />
+
+        <LinearLayout
+            android:id="@+id/colorPresetsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/colorPresetsLabel">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/colorPreset1Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="暖色调" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/colorPreset2Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="冷色调" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/colorPreset3Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="紫色" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

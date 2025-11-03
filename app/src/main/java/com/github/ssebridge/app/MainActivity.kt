@@ -1,5 +1,6 @@
 package com.github.ssebridge.app
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -78,6 +79,17 @@ class MainActivity : AppCompatActivity() {
         binding.clearLogsButton.setOnClickListener {
             executeClearLogs()
         }
+        binding.demoButton.setOnClickListener {
+            openStreamTextDemo()
+        }
+    }
+    
+    /**
+     * Open StreamTextView demo activity
+     */
+    private fun openStreamTextDemo() {
+        val intent = Intent(this, StreamTextDemoActivity::class.java)
+        startActivity(intent)
     }
 
     /**
